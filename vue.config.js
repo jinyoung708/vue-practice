@@ -3,7 +3,7 @@ module.exports = defineConfig({
   transpileDependencies: true,
   css: {
     loaderOptions: {
-      scss: {
+      sass: {
         additionalData: `
           @import "@/assets/scss/variable.scss";
         `

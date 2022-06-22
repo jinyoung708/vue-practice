@@ -1,5 +1,100 @@
 @charset "UTF-8";
+@import "reset.scss";
+@import "font";
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css");
 
-body {
-    background-color: $color1;
+
+* {box-sizing: border-box;}
+#app {
+    min-height: 100%;
+    background-color: #e7e7e7;
+}
+.clearfix::after {
+    display: block;
+    content: '';
+    clear: both;
+}
+.blind {
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+.page_progressbar_bg {
+    position: fixed;
+    z-index: 9999;
+
+    &.horizontal {
+        width: 100%;
+        height: 3px;
+        top: 0;
+        left: 0;
+    }
+
+    .page_progressbar {
+        width: 0;
+        height: 100%;
+        background-color: tomato;
+        transition: width 0.1s;
+    }
+}
+
+#content {
+    padding: $space ($rightMenuW + $space) $space ($leftMenuW + $space);
+    transition: padding 0.3s;
+
+    &.extend {
+        padding-left: $space;
+
+        #leftMenu {
+            left: -$leftMenuW;
+        }
+    }
+
+    #realContent {
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0px 0px 5px rgba(0,0,0,0.05);
+
+        .container {
+            padding: $space;
+
+            h2 {
+                font-size: 24px;
+                font-weight: 500;
+            }
+            h3 {
+                font-size: 16px;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+
+@media (max-width: 1280px) {
+    #content {
+        padding-left: $space;
+        padding-right: $space;
+    }
+}
+
+@media (max-width: 480px) {
+    #content {
+        $space : 15px;
+        padding: $space;
+
+        &.extend {
+            padding-left: $space;
+        }
+        #realContent {
+            .container {
+                padding: $space;
+            }
+        }
+    }
 }
